@@ -1,0 +1,21 @@
+---
+- name: "Ensure {{ dc_container }} folder is created."
+  ansible.builtin.file:
+    path: "{{ config_dir }}/{{ dc_container }}"
+    state: directory
+    mode: 0755
+
+
+- name: Copy {{ dc_container }} docker-compose template to Pi.
+  ansible.builtin.template:
+    src: "{{ dc_container }}-docker-compose.yml.j2"
+    dest: "{{ config_dir }}/{{ dc_container }}/docker-compose.yml"
+    mode: '0640'
+  notify: restart container
+
+# TODO: The first time this playbook is run, the `pi` user may not be added
+# to the `docker` group, so this task may fail.
+- name: "Ensure {{ dc_container }} is running."
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/{{ dc_container }}/"
+    build: false

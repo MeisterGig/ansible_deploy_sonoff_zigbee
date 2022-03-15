@@ -1,0 +1,7 @@
+---
+- name: "restart container"
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/{{ dc_container }}/"
+    build: false
+    restarted: true
+  

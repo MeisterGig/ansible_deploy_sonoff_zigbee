@@ -1,0 +1,31 @@
+---
+version: '3.8'
+services:
+  {{ mqtt_service }}:
+    image: eclipse-mosquitto:latest
+    restart: always
+    user: "root:root"
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./{{ mqtt_service }}/config:/mosquitto/config
+      - ./{{ mqtt_service }}/data:/mosquitto/data
+      - ./{{ mqtt_service }}/log:/mosquitto/log
+  {{ zb2mqtt_service }}:
+    container_name: {{ zb2mqtt_service }}
+    image: koenkk/zigbee2mqtt
+    restart: unless-stopped
+    depends_on:
+      - {{ mqtt_service }}
+    volumes:
+      - ./{{ zb2mqtt_service }}:/app/data
+      - /run/udev:/run/udev:ro
+    ports:
+      # Frontend port
+      - 8080:8080
+    environment:
+      - TZ=Europe/Berlin
+    devices:
+      # Make sure this matched your adapter location
+      - {{ usb_sonoff_serial.files[0].path }}:/dev/ttyACM0
