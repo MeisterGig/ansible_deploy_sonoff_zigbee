@@ -6,12 +6,12 @@ services:
     restart: always
     user: "root:root"
     ports:
-      - "1883:1883"
-      - "9001:9001"
+      - 1883:1883
+      - 9001:9001
     volumes:
-      - ./{{ mqtt_service }}/config:/mosquitto/config
-      - ./{{ mqtt_service }}/data:/mosquitto/data
-      - ./{{ mqtt_service }}/log:/mosquitto/log
+      - ./{{ mqtt_service }}/config:/mosquitto/config:rw
+      - ./{{ mqtt_service }}/data:/mosquitto/data:rw
+      - ./{{ mqtt_service }}/log:/mosquitto/log:rw
   {{ zb2mqtt_service }}:
     container_name: {{ zb2mqtt_service }}
     image: koenkk/zigbee2mqtt

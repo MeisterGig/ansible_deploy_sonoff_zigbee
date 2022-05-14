@@ -18,3 +18,13 @@ mqtt:
 serial:
   # Location of CC2531 USB sniffer
   port: /dev/ttyACM0
+
+frontend:
+  # Optional, default 8080
+  port: 8080
+  # Optional, default 0.0.0.0
+  host: 0.0.0.0
+  # Optional, enables authentication, disabled by default
+  #auth_token: your-secret-token
+  # Optional, url on which the frontend can be reached, currently only used for the Home Assistant device configuration page
+  #url: 'https://zigbee2mqtt.myhouse.org'

@@ -1,5 +1,5 @@
 - name: Deploy Docker, Zigbee2MQTT and Mosquito
-  hosts: all
+  hosts: raspberry
   gather_facts: true
   become: true
   tasks:

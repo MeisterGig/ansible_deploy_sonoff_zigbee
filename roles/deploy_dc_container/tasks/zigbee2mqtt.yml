@@ -17,9 +17,17 @@
   include_tasks:
     file: main.yml
 
-- name: Copy Zigbee2mqtt configurationm to host.
+- name: Copy Zigbee2mqtt configuration to host.
   ansible.builtin.template:
     src: "zb2mqtt_configuration.yaml.j2"
     dest: "{{ config_dir }}/{{ dc_container }}/{{ zb2mqtt_service }}/configuration.yaml"
+    mode: '0640'
+  notify: restart container
+
+
+- name: Copy Mosquitto configuration to host.
+  ansible.builtin.template:
+    src: "mosquitto.conf.j2"
+    dest: "{{ config_dir }}/{{ dc_container }}/{{ mqtt_service }}/config/mosquitto.conf"
     mode: '0640'
   notify: restart container
