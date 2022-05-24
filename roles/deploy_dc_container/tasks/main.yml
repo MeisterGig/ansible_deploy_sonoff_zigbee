@@ -13,8 +13,6 @@
     mode: '0640'
   notify: restart container
 
-# TODO: The first time this playbook is run, the `pi` user may not be added
-# to the `docker` group, so this task may fail.
 - name: "Ensure {{ dc_container }} is running."
   community.docker.docker_compose:
     project_src: "{{ config_dir }}/{{ dc_container }}/"

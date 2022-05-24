@@ -1,4 +1,4 @@
-config_dir: "/data"
+---
 dc_container: zigbee
 zb2mqtt_service: zigbee2mqtt
 mqtt_service: mosquitto

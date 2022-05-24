@@ -11,3 +11,8 @@
       ansible.builtin.include_role:
         name: deploy_dc_container
         tasks_from: zigbee2mqtt.yml
+
+    - name: Install homeassistant
+      ansible.builtin.include_role:
+        name: deploy_dc_container
+        tasks_from: homeassistant.yml

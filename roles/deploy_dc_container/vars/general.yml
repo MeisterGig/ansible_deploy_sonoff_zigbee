@@ -1,0 +1,4 @@
+---
+config_dir: "/data"
+enable_homeassistant: true
+enable_zigbee2mqtt: true

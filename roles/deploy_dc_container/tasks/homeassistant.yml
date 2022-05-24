@@ -1,0 +1,16 @@
+---
+- name: Load Vars file
+  include_vars:
+    file: homeassistant.yml
+
+- name: Run main.yml task to deploy docker container
+  include_tasks:
+    file: main.yml
+
+- name: Ensure Directory is present for config files
+  ansible.builtin.file:
+    path: "{{ config_dir }}/{{ dc_container }}/{{ homeassistant_service }}/"
+    state: directory
+    mode: 0755
+
+
