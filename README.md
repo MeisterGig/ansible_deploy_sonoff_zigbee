@@ -1,4 +1,4 @@
-![Ansible Linter](https://github.com/MeisterGig/ansible_deploy_sonoff_zigbee/actions/workflows/ansible-lint.yml)
+![Ansible Linter](https://github.com/MeisterGig/ansible_deploy_sonoff_zigbee/actions/workflows/ansible-lint.yml/badge.svg)
 
 Ansible Playbook for installation of Zigbee2MQTT, Homeassistant ans Mosquitto.
 

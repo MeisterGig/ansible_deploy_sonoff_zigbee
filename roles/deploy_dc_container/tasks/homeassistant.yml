@@ -4,7 +4,7 @@
     file: homeassistant.yml
 
 - name: Run main.yml task to deploy docker container
-  ansible.builtin.include_tasks: 
+  ansible.builtin.include_tasks:
     file: main.yml
 
 - name: Ensure Directory is present for config files
