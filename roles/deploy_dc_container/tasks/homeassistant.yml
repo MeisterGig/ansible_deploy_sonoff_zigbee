@@ -1,11 +1,11 @@
 ---
 - name: Load Vars file
-  include_vars:
-    ansible.builtin.file: homeassistant.yml
+  ansible.builtin.include_vars:
+    file: homeassistant.yml
 
 - name: Run main.yml task to deploy docker container
-  include_tasks:
-    ansible.builtin.file: main.yml
+  ansible.builtin.include_tasks: 
+    file: main.yml
 
 - name: Ensure Directory is present for config files
   ansible.builtin.file:
