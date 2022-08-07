@@ -4,17 +4,17 @@
   ansible.builtin.find:
     paths: "/dev/serial/by-id/"
     contains: "usb-ITead_Sonoff_Zigbee*"
-    use_regex: yes
+    use_regex: true
     file_type: link
   register: usb_sonoff_serial
 
 
 - name: Load Vars file
-  include_vars:
+  ansible.builtin.include_vars:
     file: zigbee2mqtt.yml
 
 - name: Run main.yml task to deploy docker container
-  include_tasks:
+  ansible.builtin.include_tasks:
     file: main.yml
 
 - name: Copy Zigbee2mqtt configuration to host.
